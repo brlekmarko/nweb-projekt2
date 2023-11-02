@@ -5,7 +5,67 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Vrlo nesigurna stranica - Sensitive Data</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script src='sensitive-data.js'></script>
+
+
+
+    <script>
+        function generatePage() {
+            // need to read query string to see if we are showing sensitive data
+            let urlParams = new URLSearchParams(window.location.search);
+            let toHash = urlParams.get('hash');
+
+            let page = document.getElementById("jsDiv");
+            let topText = document.createElement("h2");
+            let bottomText = document.createElement("h1");
+            bottomText.style.color = "red";
+
+            if (toHash === "true") {
+                topText.innerHTML = "Reading from hashedPasswords table";
+
+                // need to go over hashedPasswords array
+                let text = "";
+                for (let i = 0; i < hashedPasswords.length; i++) {
+                    text += "Salt: " + hashedPasswords[i].salt + ", Hash: " + hashedPasswords[i].password + "<br>";
+                }
+                bottomText.innerHTML = text;
+            } else {
+                topText.innerHTML = "Reading from plaintextPasswords table";
+                
+                // need to go over plaintextPasswords array
+                let text = "";
+                for (let i = 0; i < plaintextPasswords.length; i++) {
+                    text += "Password: " + plaintextPasswords[i].password + "<br>";
+                }
+                bottomText.innerHTML = text;
+            }
+
+            page.appendChild(topText);
+            page.appendChild(bottomText);
+
+        }
+
+        const hashedPasswords = [
+            {salt: "2q@ugZvm+R!J", password: "1bede1cf7960a1c867308fa2e6683a464215fe5cdd35f348271ef5a37c019597"},
+            {salt: "0dv0XHDyrKik", password: "f437ea8a7446c2329903b45902bc52ba17b43a492ca73b0a8e033c66f56831bd"},
+            {salt: "GcOhI0H!gWls", password: "292b178dd6b39bfc08d43ec008aa649a7bf00e1f99e30d567000c0c909b625b5"},
+            {salt: "5hAi&2!4dmK3", password: "2b949cffa348076c48575299ee27b69fae1c91b67cc2a2498e19ef0cf5e68349"},
+            {salt: "lXW_S0QwpEgq", password: "c9bea8312258f6e4964034ea5125a9de3f796d836ca8599d58cee5c7ed78ada5"},
+            {salt: "luEWtM0IZtO2", password: "0e14678ac6ee6f563438dce9d79cf4bf4047bffef83afc423027618a6f0d0b0e"}
+        ]
+
+        const plaintextPasswords = [
+            {password: "justAnotherPassword"},
+            {password: "elliotaldersonfsociety"},
+            {password: "123"},
+            {password: "sup3rc0mpl1cat3dpass"},
+            {password: "correct staple battery horse"},
+            {password: "testPrvaLozinka"}
+        ]
+        document.addEventListener("DOMContentLoaded", generatePage);
+    </script>
+
+
+
 </head>
 <body>
     <a href="/">Početna</a>

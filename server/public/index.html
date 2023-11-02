@@ -5,7 +5,26 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Vrlo nesigurna stranica</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script src='index.js'></script>
+
+
+    <script>
+        function xssButton() {
+            // check if we want to sanitize comments
+            var sanitize = document.getElementById("sanitize").checked;
+            // redirect to the comments page
+            window.location.href = "/xss?sanitize=" + sanitize;
+        }
+
+        function sensitiveDataButton() {
+            // check if we want to show hashed passwords
+            var showHashedPasswords = document.getElementById("hash").checked;
+            // redirect to the sensitive data page
+            window.location.href = "/sensitive-data?hash=" + showHashedPasswords;
+        }
+    </script>
+
+
+
 </head>
 <body>
     <h1>Drugi projekt</h1>
