@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Vrlo nesigurna stranica - XSS</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='/js/xss.js'></script>
+</head>
+<body>
+    <a href="/">Početna</a>
+    <h1>Testiranje XSS ranjivosti</h1>
+    <br>
+    <h2>Novi komentari se neće spremiti u bazu, već će se samo držati u memoriji dok se ne osvježi stranica </h2>
+    <h2>Razlog za to je da osiguramo da je ova stranica uvijek sigurna za korištenje</h2>
+    <br><br>
+    <div id="jsDiv"></div>
+</body>
+</html>

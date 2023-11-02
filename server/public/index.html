@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Vrlo nesigurna stranica</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='/js/index.js'></script>
+</head>
+<body>
+    <h1>Drugi projekt</h1>
+    <br><br>
+    <hr>
+    <h1>(Stored) Cross-site scripting (XSS)</h1>
+    <h2>
+        Klikom na gumb otvoriti će se stranica na kojoj se mogu upisivati komentari, no u komentare se može ubaciti i JavaScript kod koji će se izvršiti kada netko drugi otvori stranicu
+    </h2>
+    <h2>
+        Ako označite checkbox, svi komentari će se sanitizirati, odnosno ukloniti će se svi HTML tagovi iz komentara
+    </h2>
+    <br>
+    <input type="checkbox" id="sanitize" name="sanitize" value="sanitize" style="width: 15px; height: 15px;">
+    <label for="sanitize" style="font-size: 20px;">Sanitiziraj komentare</label>
+    <br>
+    <button onclick="xssButton()" style="height: 50px; font-size: 15px;">Otvori stranicu za komentare</button>
+    <br><br>
+
+    <hr>
+
+    <h1>Sensitive data exposure</h1>
+    <h2>
+        Klikom na gumb otvoriti će se stranica na kojoj će se prikazati lozinke korisnika (recimo da ih je napadač dobio korištenjem SQL injectiona)
+    </h2>
+    <h2>
+        Ako označite checkbox, prikazat će se lozinke iz baze koja sprema hashirane lozinke (SHA256), a inače lozinke iz baze koja ih sprema u plain textu
+    </h2>
+    <br>
+    <input type="checkbox" id="hash" name="hash" value="hash" style="width: 15px; height: 15px;">
+    <label for="hash" style="font-size: 20px;">Prikaži hashirane lozinke</label>
+    <br>
+    <button onclick="sensitiveDataButton()" style="height: 50px; font-size: 15px;">Otvori stranicu sa osjetljivim podacima</button>
+
+
+    
+</body>
+</html>
